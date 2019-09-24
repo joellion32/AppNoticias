@@ -1,0 +1,50 @@
+<ion-header no-border>
+  <ion-toolbar color="dark">
+    <ion-title>
+      Favoritos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <ng-container *ngIf="Localservice.noticias.length === 0; else elseTemplate">
+    <ion-slides>
+      <ion-slide>
+        <ion-label>No hay Favoritos</ion-label>
+      </ion-slide>
+    </ion-slides>
+  </ng-container>
+  
+  <ng-template #elseTemplate>
+      <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" sizeLg="3" sizeMd="4" sizeSm="6" sizeXs="12" 
+      *ngFor="let noticia of Localservice.noticias; let i = index">
+        <ion-card color="dark">
+          <ion-card-header>
+            <ion-card-subtitle>
+             <span class="text-primary">{{i + 1}}.</span> 
+            <span class="text-source">{{noticia.source.name}}</span>
+            <div class="noticia-more">
+             <ion-button fill="clear" (click)="lanzar(noticia)">
+              <ion-icon slot="icon-only" name="more"></ion-icon>
+             </ion-button> 
+            </div>
+            </ion-card-subtitle>
+            <ion-card-title (click)="url( noticia.url )">{{noticia.title}}</ion-card-title>
+          </ion-card-header>
+          <ng-container *ngIf="noticia.urlToImage; else elseTemplate">
+            <ion-img (click)="url(noticia.url)" [src]="noticia.urlToImage"></ion-img>
+          </ng-container>
+          <ng-template #elseTemplate>
+          <ion-img (click)="url(noticia.url)" src="https://www.freeiconspng.com/uploads/no-image-icon-11.PNG"></ion-img>
+          </ng-template>
+          <ion-card-content><p>{{noticia.description}}</p></ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ng-template>
+
+</ion-content>

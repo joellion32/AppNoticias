@@ -1,0 +1,26 @@
+ion-segment-button{
+    background-color: var(--ion-color-dark) !important;
+    color: white !important;    
+    border: none !important;
+    }
+    
+    .segment-button-checked{
+        color: var(--ion-color-primary) !important;
+    }
+    
+    .welcome-card ion-img {
+      max-height: 35vh;
+      overflow: hidden;
+    }
+    
+    .noticia-more{
+    font-size: 25px !important;
+    position: absolute;
+    right: -10px;
+    top: -18px;  
+    }
+
+    ion-slides,ion-slide{
+    width: 100% !important;
+    height: 100% !important;  
+    }
